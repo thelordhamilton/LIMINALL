@@ -1,5 +1,4 @@
 "use client"
-import { Play, Volume2, MoreHorizontal } from "lucide-react"
 import { useState } from "react"
 
 interface MediaItem {
@@ -71,6 +70,26 @@ interface MediaGridProps {
   activeSection: string
 }
 
+const PlayIcon = () => (
+  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+    <path d="M8 5v14l11-7z" />
+  </svg>
+)
+
+const Volume2Icon = () => (
+  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+    <path d="M11 5L6 9H2v6h4l5 4V5zM19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07" />
+  </svg>
+)
+
+const MoreHorizontalIcon = () => (
+  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+    <circle cx="12" cy="12" r="1" />
+    <circle cx="19" cy="12" r="1" />
+    <circle cx="5" cy="12" r="1" />
+  </svg>
+)
+
 export function MediaGrid({ activeSection }: MediaGridProps) {
   const [selectedItem, setSelectedItem] = useState<string | null>(null)
 
@@ -90,9 +109,9 @@ export function MediaGrid({ activeSection }: MediaGridProps) {
   const getTypeIcon = (type: string) => {
     switch (type) {
       case "video":
-        return <Play className="w-4 h-4" />
+        return <PlayIcon />
       case "audio":
-        return <Volume2 className="w-4 h-4" />
+        return <Volume2Icon />
       default:
         return null
     }
@@ -168,7 +187,7 @@ export function MediaGrid({ activeSection }: MediaGridProps) {
                 </div>
 
                 <button className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 glass-button-ultra p-2 rounded-lg border border-white/20">
-                  <MoreHorizontal className="w-4 h-4" />
+                  <MoreHorizontalIcon />
                 </button>
               </div>
             </div>

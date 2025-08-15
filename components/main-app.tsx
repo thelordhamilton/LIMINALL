@@ -13,40 +13,39 @@ export function MainApp() {
   }
 
   return (
-    <div className="min-h-screen main-app-container flex flex-col">
-      <div className="flex flex-1">
+    <div className="min-h-screen main-app-container">
+      <div className="fixed left-0 top-0 h-screen z-10">
         <NavigationSidebar activeSection={activeSection} onSectionChange={setActiveSection} />
-
-        {/* Main Content Area */}
-        <div className="flex-1 flex flex-col">
-          <header className="h-24 glass-panel-ultra depth-layer-3 flex items-center justify-between px-12 m-6 mb-0 border border-white/10">
-            <div className="flex items-center space-x-8">
-              <h1 className="liminal-title text-4xl font-display font-bold tracking-[0.2em]">
-                {activeSection.charAt(0).toUpperCase() + activeSection.slice(1)}
-              </h1>
-            </div>
-
-            <div className="flex items-center space-x-8">
-              <div className="glass-panel-ultra px-8 py-4 border border-white/5">
-                <span className="text-white/90 text-sm font-medium tracking-wide">SYSTEM READY</span>
-              </div>
-              <div className="glass-panel-ultra px-6 py-4 border border-white/5">
-                <div className="w-3 h-3 bg-emerald-400 rounded-full shadow-[0_0_12px_rgba(52,211,153,0.6)]"></div>
-              </div>
-            </div>
-          </header>
-
-          <main className="flex-1 p-6 pt-0">
-            <MediaGrid activeSection={activeSection} />
-          </main>
-        </div>
       </div>
 
-      <footer className="text-center py-8 pb-10">
-        <p className="text-white/50 text-sm font-medium tracking-wide">
-          LIMINAL is created by Lord Liminal LLC™ - © All Rights Reserved
-        </p>
-      </footer>
+      <div className="ml-72 flex flex-col min-h-screen">
+        <header className="h-16 glass-panel-realistic depth-layer-2 flex items-center justify-between px-6 m-3 mb-0 backdrop-blur-md">
+          <div className="flex items-center space-x-4">
+            <h1 className="liminal-title text-2xl font-display font-bold tracking-[0.1em]">
+              {activeSection.charAt(0).toUpperCase() + activeSection.slice(1)}
+            </h1>
+          </div>
+
+          <div className="flex items-center space-x-4">
+            <div className="glass-panel-realistic px-4 py-2 backdrop-blur-md">
+              <span className="text-white/90 text-xs font-medium tracking-wide">SYSTEM READY</span>
+            </div>
+            <div className="glass-panel-realistic px-3 py-2 backdrop-blur-md">
+              <div className="w-2 h-2 bg-emerald-400 rounded-full shadow-[0_0_8px_rgba(52,211,153,0.6)]"></div>
+            </div>
+          </div>
+        </header>
+
+        <main className="flex-1 p-3 pt-0">
+          <MediaGrid activeSection={activeSection} />
+        </main>
+
+        <footer className="text-center py-4">
+          <p className="text-white/50 text-xs font-medium tracking-wide">
+            LIMINAL is created by Lord Liminal LLC™ - © All Rights Reserved
+          </p>
+        </footer>
+      </div>
     </div>
   )
 }

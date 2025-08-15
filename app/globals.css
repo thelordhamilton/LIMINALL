@@ -125,9 +125,9 @@
     background: #000000;
   }
 
-  /* Updated universal crystalline background for all main app pages except landing */
+  /* Updated background image path and ensured proper loading */
   .main-app-container {
-    background: #000000 url("/universal-app-bg.jpeg") center center;
+    background: #000000 url("/atmospheric-liminal-bg.jpeg") center center;
     background-size: cover;
     background-attachment: fixed;
     background-repeat: no-repeat;
@@ -142,7 +142,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(135deg, rgba(0, 0, 0, 0.15) 0%, rgba(0, 0, 0, 0.25) 100%);
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.2) 100%);
     pointer-events: none;
     z-index: 0;
   }
@@ -190,7 +190,7 @@
     position: absolute;
     top: 0;
     left: 0;
-    background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.3) 50%, transparent 70%);
+    background: linear-gradient(45deg, transparent 30%, rgba(255, 200, 200, 0.3) 50%, transparent 70%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -255,7 +255,7 @@
     left: 0;
     right: 0;
     height: 1px;
-    background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.2) 50%, transparent 100%);
+    background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.1) 50%, transparent 100%);
   }
 
   .glass-panel-premium::after {
@@ -325,6 +325,19 @@
     filter: blur(0.3px);
   }
 
+  /* Depth layering system */
+  .depth-layer-1 {
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4), 0 2px 8px rgba(0, 0, 0, 0.2), inset 0 0.5px 0 rgba(255, 255, 255, 0.08);
+  }
+
+  .depth-layer-2 {
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5), 0 4px 12px rgba(0, 0, 0, 0.3), inset 0 0.5px 0 rgba(255, 255, 255, 0.1);
+  }
+
+  .depth-layer-3 {
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.6), 0 6px 16px rgba(0, 0, 0, 0.4), inset 0 0.5px 0 rgba(255, 255, 255, 0.12);
+  }
+
   /* Subtle refraction effects within glass */
   .glass-panel-realistic .glass-refraction {
     position: absolute;
@@ -392,62 +405,116 @@
     );
   }
 
-  /* Prismatic button effects */
-  .glass-button-prismatic {
+  /* Slimmed down realistic glass panels with clear transparency */
+  .glass-panel-ultra {
+    background: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.04) 0%,
+      rgba(255, 255, 255, 0.01) 50%,
+      rgba(255, 255, 255, 0.03) 100%
+    );
+    border: 0.5px solid rgba(255, 255, 255, 0.15);
+    border-top: 0.5px solid rgba(255, 255, 255, 0.25);
+    border-left: 0.5px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(0.3px) saturate(1.1);
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3), 0 1px 2px rgba(0, 0, 0, 0.2), inset 0 0.5px 0 rgba(255, 255, 255, 0.15),
+      inset 0.5px 0 0 rgba(255, 255, 255, 0.08);
+  }
+
+  .glass-panel-ultra::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(255, 255, 255, 0.3) 20%,
+      rgba(200, 220, 255, 0.2) 40%,
+      rgba(255, 255, 255, 0.4) 60%,
+      rgba(255, 200, 200, 0.15) 80%,
+      transparent 100%
+    );
+    filter: blur(0.2px);
+  }
+
+  .glass-panel-ultra::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1px;
+    bottom: 0;
+    background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.25) 0%,
+      rgba(220, 240, 255, 0.15) 30%,
+      rgba(255, 255, 255, 0.1) 60%,
+      transparent 100%
+    );
+    filter: blur(0.1px);
+  }
+
+  /* Slimmed down glass buttons with realistic transparency */
+  .glass-button-ultra {
+    background: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.02) 0%,
+      rgba(255, 255, 255, 0.005) 50%,
+      rgba(255, 255, 255, 0.015) 100%
+    );
+    border: 0.5px solid rgba(255, 255, 255, 0.08);
+    border-radius: 6px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2), inset 0 0.5px 0 rgba(255, 255, 255, 0.1);
+  }
+
+  .glass-button-ultra:hover {
+    background: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.03) 0%,
+      rgba(255, 255, 255, 0.01) 50%,
+      rgba(255, 255, 255, 0.025) 100%
+    );
+    border-color: rgba(255, 255, 255, 0.12);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25), 0 0 8px rgba(255, 255, 255, 0.04), inset 0 0.5px 0
+      rgba(255, 255, 255, 0.15);
+  }
+
+  /* Active state for navigation buttons */
+  .glass-button-ultra-active {
     background: linear-gradient(
       135deg,
       rgba(255, 255, 255, 0.05) 0%,
       rgba(255, 255, 255, 0.02) 50%,
       rgba(255, 255, 255, 0.04) 100%
     );
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-top: 1px solid rgba(255, 255, 255, 0.3);
-    border-radius: 12px;
-    position: relative;
-    overflow: hidden;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    border: 0.5px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3), 0 0 12px rgba(255, 255, 255, 0.06), inset 0 0.5px 0
+      rgba(255, 255, 255, 0.2);
   }
 
-  .glass-button-prismatic::before {
-    content: "";
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: conic-gradient(
-      from 0deg,
-      transparent 0deg,
-      rgba(255, 200, 200, 0.1) 60deg,
-      rgba(200, 255, 200, 0.1) 120deg,
-      rgba(200, 200, 255, 0.1) 180deg,
-      rgba(255, 255, 200, 0.1) 240deg,
-      rgba(255, 200, 255, 0.1) 300deg,
-      transparent 360deg
-    );
-    opacity: 0;
-    transition: opacity 0.3s ease;
+  /* Slimmed down input styling */
+  .glass-input-premium {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.02) 0%, rgba(255, 255, 255, 0.008) 100%);
+    border: 0.5px solid rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    backdrop-filter: blur(0.2px);
   }
 
-  .glass-button-prismatic:hover::before {
-    opacity: 0.3;
-    animation: prism-rotate 2s linear infinite;
-  }
-
-  @keyframes prism-rotate {
-    from {
-      transform: rotate(0deg);
-    }
-    to {
-      transform: rotate(360deg);
-    }
-  }
-
-  .glass-button-prismatic:hover {
-    border-color: rgba(255, 255, 255, 0.3);
-    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.4), 0 0 16px rgba(255, 255, 255, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.3);
-    transform: translateY(-1px);
+  .glass-input-premium:focus {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.012) 100%);
+    border-color: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.04), inset 0 0.5px 0 rgba(255, 255, 255, 0.1);
+    outline: none;
   }
 
   /* Premium button styles with subtle sheen */
@@ -479,8 +546,7 @@
 
   .glass-button-premium:hover {
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0.03) 100%);
-    border-color: rgba(255, 255, 255, 0.2);
-    box-shadow: 0 0 16px rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.12);
   }
 
   /* Secondary button style */
@@ -537,17 +603,6 @@
     width: 1px;
     bottom: 0;
     background: linear-gradient(180deg, transparent 0%, rgba(255, 255, 255, 0.08) 50%, transparent 100%);
-  }
-
-  /* Depth layering system */
-  .depth-layer-1 {
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.6), 0 8px 24px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.05);
-    transform: translateZ(10px);
-  }
-
-  .depth-layer-2 {
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.7), 0 12px 32px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.08);
-    transform: translateZ(20px);
   }
 
   /* Refined glass buttons with subtle sheen */
